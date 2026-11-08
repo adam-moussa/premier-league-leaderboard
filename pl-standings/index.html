@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Premier League 2025/26 – Table and results</title>
+<meta name="description" content="Final table and all 380 results of the 2025/26 Premier League season.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --bg:#F3F4F7; --surface:#FFFFFF; --ink:#1A1433; --muted:#68657C; --line:#E2E2EA; --hover:#F0EEF7;
+  --accent:#5B2A86;
+  --z-champ:#D4A017; --z-ucl:#2F6FEB; --z-uel:#F08C00; --z-uecl:#12A39A; --z-rel:#D6336C;
+  --win:#1E9E5A; --draw:#8C8A99; --loss:#D6336C;
+  --display:"Barlow Condensed","Arial Narrow","Roboto Condensed",sans-serif;
+  --text:"Barlow","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root{ color-scheme: dark;
+    --bg:#14111F; --surface:#1D1930; --ink:#ECEAF5; --muted:#A39FB8; --line:#2E2945; --hover:#262040;
+    --accent:#B98AE6; --win:#3CC47C; --draw:#8F8BA6; --loss:#F06292; }
+}
+*{box-sizing:border-box}
+html{ -webkit-text-size-adjust:100%; }
+body{ margin:0; background:var(--bg); color:var(--ink); font:400 16px/1.5 var(--text);
+  padding-bottom:env(safe-area-inset-bottom,0px); }
+a{ color:inherit }
+:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; border-radius:3px }
+main:focus, main:focus-visible{ outline:none }
+.wrap{ max-width:940px; margin:0 auto; padding:0 16px }
+
+header{ background:var(--ink); color:var(--bg); padding-top:env(safe-area-inset-top,0px) }
+@media (prefers-color-scheme: dark){ header{ background:#0C0A14; color:var(--ink) } }
+.head{ display:flex; align-items:flex-end; justify-content:space-between; gap:16px; padding:22px 16px 0; flex-wrap:wrap }
+.brand h1{ font:700 clamp(30px,6vw,46px)/0.95 var(--display); margin:0; letter-spacing:.2px }
+.brand p{ margin:6px 0 16px; opacity:.72; font-size:15px }
+nav{ display:flex; gap:4px }
+nav a{ font:600 18px/1 var(--display); text-decoration:none; padding:12px 18px 14px; border-radius:8px 8px 0 0; opacity:.75 }
+nav a[aria-current="page"]{ background:var(--bg); color:var(--ink); opacity:1 }
+nav a:hover{ opacity:1 }
+
+main.wrap{ padding:28px 16px 40px }
+h2{ font:700 28px/1.1 var(--display); margin:0 0 4px }
+.sub{ color:var(--muted); margin:0 0 18px; font-size:15px }
+
+.card{ background:var(--surface); border:1px solid var(--line); border-radius:10px; overflow:hidden }
+.scroll{ overflow-x:auto }
+table{ border-collapse:collapse; width:100%; min-width:560px }
+th{ font:600 14px/1 var(--display); color:var(--muted); text-align:center; padding:12px 6px; border-bottom:1px solid var(--line) }
+td{ padding:0 6px; height:44px; text-align:center; border-bottom:1px solid var(--line); font-variant-numeric:tabular-nums }
+tr:last-child td{ border-bottom:0 }
+tbody tr:hover{ background:var(--hover) }
+th.team, td.team{ text-align:left }
+td.pos{ position:relative; width:52px; font:600 17px var(--display); padding-left:14px }
+td.pos::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:5px; background:var(--zone,transparent) }
+td.pts{ font:700 19px var(--display) }
+.gd-pos{ color:var(--win) } .gd-neg{ color:var(--loss) }
+.teamlink{ text-decoration:none; font-weight:600; display:inline-flex; align-items:center; gap:10px; padding:10px 0 }
+.teamlink:hover{ text-decoration:underline; text-underline-offset:3px }
+.crest{ width:30px; height:22px; border-radius:4px; background:var(--hover); color:var(--muted);
+  font:700 11px/22px var(--display); text-align:center; letter-spacing:.3px; flex:none }
+td.small{ color:var(--muted); width:40px }
+
+.legend{ display:flex; flex-wrap:wrap; gap:8px 18px; margin:14px 2px 0; color:var(--muted); font-size:14px }
+.legend span::before{ content:""; display:inline-block; width:10px; height:10px; border-radius:2px; margin-right:7px; background:var(--c); vertical-align:-1px }
+
+/* Results */
+.rounds{ display:flex; gap:6px; overflow-x:auto; padding:2px 2px 12px; margin-bottom:6px; scrollbar-width:thin }
+.rounds a{ flex:none; width:40px; height:40px; display:grid; place-items:center; border-radius:8px; text-decoration:none;
+  font:600 17px var(--display); background:var(--surface); border:1px solid var(--line); color:var(--muted) }
+.rounds a:hover{ color:var(--ink) }
+.rounds a[aria-current="true"]{ background:var(--ink); color:var(--bg); border-color:var(--ink) }
+.mwhead{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin:10px 0 12px }
+.mwhead h2{ margin:0 }
+.step{ display:flex; gap:6px }
+.step a{ text-decoration:none; font:600 16px var(--display); padding:8px 12px; border:1px solid var(--line); border-radius:8px; background:var(--surface) }
+.step a[aria-disabled="true"]{ opacity:.35; pointer-events:none }
+
+.fixture{ display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px; padding:10px 14px; border-bottom:1px solid var(--line) }
+.fixture:last-child{ border-bottom:0 }
+.fixture .home{ justify-self:end; text-align:right }
+.fixture .home .teamlink{ flex-direction:row-reverse }
+.score{ font:700 30px/1 var(--display); min-width:86px; text-align:center; letter-spacing:1px; font-variant-numeric:tabular-nums }
+.score b{ font-weight:700 } .score .dim{ color:var(--muted); font-weight:600 }
+.venue{ grid-column:1/-1; text-align:center; color:var(--muted); font-size:13px; margin-top:-6px }
+
+/* Team page */
+.back{ display:inline-block; margin-bottom:14px; text-decoration:none; color:var(--muted); font-weight:500 }
+.back:hover{ color:var(--ink) }
+.teamhead{ display:flex; align-items:center; gap:16px; margin-bottom:18px; flex-wrap:wrap }
+.teamhead .crest{ width:64px; height:48px; font-size:22px; line-height:48px; border-radius:8px; background:var(--ink); color:var(--bg) }
+.teamhead h2{ font-size:38px }
+.facts{ display:grid; grid-template-columns:repeat(auto-fit,minmax(128px,1fr)); gap:10px; margin-bottom:20px }
+.fact{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:12px 14px }
+.fact b{ display:block; font:700 28px/1 var(--display); white-space:nowrap }
+.fact span{ color:var(--muted); font-size:14px }
+.filters{ display:flex; gap:6px; margin-bottom:12px }
+.filters button{ font:600 16px var(--display); padding:8px 16px; border-radius:20px; border:1px solid var(--line); background:var(--surface); color:var(--ink); cursor:pointer }
+.filters button[aria-pressed="true"]{ background:var(--ink); color:var(--bg); border-color:var(--ink) }
+.res{ display:inline-grid; place-items:center; width:28px; height:28px; border-radius:6px; color:#fff; font:700 15px var(--display) }
+.res.W{ background:var(--win) } .res.D{ background:var(--draw) } .res.L{ background:var(--loss) }
+td.big{ font:700 22px var(--display); letter-spacing:.5px; white-space:nowrap }
+.ha{ color:var(--muted); font-size:14px }
+.form{ display:flex; gap:4px; flex-wrap:wrap }
+
+footer{ color:var(--muted); font-size:13px; text-align:center; padding:0 16px 28px }
+@media (max-width:560px){
+  .fixture{ gap:8px; padding:10px 8px } .score{ font-size:24px; min-width:64px }
+  .fixture .crest{ display:none }
+  nav a{ padding:10px 14px 12px }
+}
+@media (prefers-reduced-motion:no-preference){ main{ animation:in .25s ease-out } @keyframes in{ from{opacity:.4} } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap head">
+    <div class="brand">
+      <h1>Premier League 2025/26</h1>
+      <p>Final standings and every result of the season</p>
+    </div>
+    <nav aria-label="Sections">
+      <a href="#table" id="nav-table">Table</a>
+      <a href="#results" id="nav-results">Results</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap" id="app" tabindex="-1"></main>
+<footer>Points: win 3, draw 1, loss 0. Ranked by points, goal difference, then goals scored. Data: 380 league matches, 2025/26 season.</footer>
+
+<script>
+const DATA = {"teams":[{"c":"ARS","n":"Arsenal","s":"Arsenal","st":"Emirates Stadium"},{"c":"AVL","n":"Aston Villa","s":"Aston Villa","st":"Villa Park"},{"c":"BOU","n":"AFC Bournemouth","s":"Bournemouth","st":"Vitality Stadium"},{"c":"BRE","n":"Brentford","s":"Brentford","st":"Gtech Community Stadium"},{"c":"BHA","n":"Brighton & Hove Albion","s":"Brighton","st":"Amex Stadium"},{"c":"BUR","n":"Burnley","s":"Burnley","st":"Turf Moor"},{"c":"CHE","n":"Chelsea","s":"Chelsea","st":"Stamford Bridge"},{"c":"CRY","n":"Crystal Palace","s":"Crystal Palace","st":"Selhurst Park"},{"c":"EVE","n":"Everton","s":"Everton","st":"Hill Dickinson Stadium"},{"c":"FUL","n":"Fulham","s":"Fulham","st":"Craven Cottage"},{"c":"LEE","n":"Leeds United","s":"Leeds","st":"Elland Road"},{"c":"LIV","n":"Liverpool","s":"Liverpool","st":"Anfield"},{"c":"MCI","n":"Manchester City","s":"Man City","st":"Etihad Stadium"},{"c":"MUN","n":"Manchester United","s":"Man United","st":"Old Trafford"},{"c":"NEW","n":"Newcastle United","s":"Newcastle","st":"St James' Park"},{"c":"NFO","n":"Nottingham Forest","s":"Nott'm Forest","st":"City Ground"},{"c":"SUN","n":"Sunderland","s":"Sunderland","st":"Stadium of Light"},{"c":"TOT","n":"Tottenham Hotspur","s":"Tottenham","st":"Tottenham Hotspur Stadium"},{"c":"WHU","n":"West Ham United","s":"West Ham","st":"London Stadium"},{"c":"WOL","n":"Wolverhampton Wanderers","s":"Wolves","st":"Molineux Stadium"}],"mw":{"1":"2025-08-15","2":"2025-08-22","3":"2025-08-30","4":"2025-09-13","5":"2025-09-20","6":"2025-09-27","7":"2025-10-03","8":"2025-10-18","9":"2025-10-24","10":"2025-11-01","11":"2025-11-08","12":"2025-11-22","13":"2025-11-29","14":"2025-12-03","15":"2025-12-06","16":"2025-12-13","17":"2025-12-20","18":"2025-12-27","19":"2025-12-30","20":"2026-01-03","21":"2026-01-07","22":"2026-01-17","23":"2026-01-24","24":"2026-01-31","25":"2026-02-07","26":"2026-02-11","27":"2026-02-21","28":"2026-02-28","29":"2026-03-04","30":"2026-03-14","31":"2026-03-21","32":"2026-04-11","33":"2026-04-18","34":"2026-04-25","35":"2026-05-02","36":"2026-05-09","37":"2026-05-17","38":"2026-05-24"},"m":[[1,"AVL","NEW",0,0],[1,"BHA","FUL",1,1],[1,"CHE","CRY",0,0],[1,"LEE","EVE",1,0],[1,"LIV","BOU",4,2],[1,"MUN","ARS",0,1],[1,"NFO","BRE",3,1],[1,"SUN","WHU",3,0],[1,"TOT","BUR",3,0],[1,"WOL","MCI",0,4],[2,"ARS","LEE",5,0],[2,"BOU","WOL",1,0],[2,"BRE","AVL",1,0],[2,"BUR","SUN",2,0],[2,"CRY","NFO",1,1],[2,"EVE","BHA",2,0],[2,"FUL","MUN",1,1],[2,"MCI","TOT",0,2],[2,"NEW","LIV",2,3],[2,"WHU","CHE",1,5],[3,"AVL","CRY",0,3],[3,"BHA","MCI",2,1],[3,"CHE","FUL",2,0],[3,"LEE","NEW",0,0],[3,"LIV","ARS",1,0],[3,"MUN","BUR",3,2],[3,"NFO","WHU",0,3],[3,"SUN","BRE",2,1],[3,"TOT","BOU",0,1],[3,"WOL","EVE",2,3],[4,"ARS","NFO",3,0],[4,"BOU","BHA",2,1],[4,"BRE","CHE",2,2],[4,"BUR","LIV",0,1],[4,"CRY","SUN",0,0],[4,"EVE","AVL",0,0],[4,"FUL","LEE",1,0],[4,"MCI","MUN",3,0],[4,"NEW","WOL",1,0],[4,"WHU","TOT",0,3],[5,"ARS","MCI",1,1],[5,"BHA","TOT",2,2],[5,"BOU","NEW",0,0],[5,"BUR","NFO",1,1],[5,"FUL","BRE",3,1],[5,"LIV","EVE",2,1],[5,"MUN","CHE",2,1],[5,"SUN","AVL",1,1],[5,"WHU","CRY",1,2],[5,"WOL","LEE",1,3],[6,"AVL","FUL",3,1],[6,"BRE","MUN",3,1],[6,"CHE","BHA",1,3],[6,"CRY","LIV",2,1],[6,"EVE","WHU",1,1],[6,"LEE","BOU",2,2],[6,"MCI","BUR",5,1],[6,"NEW","ARS",1,2],[6,"NFO","SUN",0,1],[6,"TOT","WOL",1,1],[7,"ARS","WHU",2,0],[7,"AVL","BUR",2,1],[7,"BOU","FUL",3,1],[7,"BRE","MCI",0,1],[7,"CHE","LIV",2,1],[7,"EVE","CRY",2,1],[7,"LEE","TOT",1,2],[7,"MUN","SUN",2,0],[7,"NEW","NFO",2,0],[7,"WOL","BHA",1,1],[8,"BHA","NEW",2,1],[8,"BUR","LEE",2,0],[8,"CRY","BOU",3,3],[8,"FUL","ARS",0,1],[8,"LIV","MUN",1,2],[8,"MCI","EVE",2,0],[8,"NFO","CHE",0,3],[8,"SUN","WOL",2,0],[8,"TOT","AVL",1,2],[8,"WHU","BRE",0,2],[9,"ARS","CRY",1,0],[9,"AVL","MCI",1,0],[9,"BOU","NFO",2,0],[9,"BRE","LIV",3,2],[9,"CHE","SUN",1,2],[9,"EVE","TOT",0,3],[9,"LEE","WHU",2,1],[9,"MUN","BHA",4,2],[9,"NEW","FUL",2,1],[9,"WOL","BUR",2,3],[10,"BHA","LEE",3,0],[10,"BUR","ARS",0,2],[10,"CRY","BRE",2,0],[10,"FUL","WOL",3,0],[10,"LIV","AVL",2,0],[10,"MCI","BOU",3,1],[10,"NFO","MUN",2,2],[10,"SUN","EVE",1,1],[10,"TOT","CHE",0,1],[10,"WHU","NEW",3,1],[11,"AVL","BOU",4,0],[11,"BRE","NEW",3,1],[11,"CHE","WOL",3,0],[11,"CRY","BHA",0,0],[11,"EVE","FUL",2,0],[11,"MCI","LIV",3,0],[11,"NFO","LEE",3,1],[11,"SUN","ARS",2,2],[11,"TOT","MUN",2,2],[11,"WHU","BUR",3,2],[12,"ARS","TOT",4,1],[12,"BHA","BRE",2,1],[12,"BOU","WHU",2,2],[12,"BUR","CHE",0,2],[12,"FUL","SUN",1,0],[12,"LEE","AVL",1,2],[12,"LIV","NFO",0,3],[12,"MUN","EVE",0,1],[12,"NEW","MCI",2,1],[12,"WOL","CRY",0,2],[13,"AVL","WOL",1,0],[13,"BRE","BUR",3,1],[13,"CHE","ARS",1,1],[13,"CRY","MUN",1,2],[13,"EVE","NEW",1,4],[13,"MCI","LEE",3,2],[13,"NFO","BHA",0,2],[13,"SUN","BOU",3,2],[13,"TOT","FUL",1,2],[13,"WHU","LIV",0,2],[14,"ARS","BRE",2,0],[14,"BHA","AVL",3,4],[14,"BOU","EVE",0,1],[14,"BUR","CRY",0,1],[14,"FUL","MCI",4,5],[14,"LEE","CHE",3,1],[14,"LIV","SUN",1,1],[14,"MUN","WHU",1,1],[14,"NEW","TOT",2,2],[14,"WOL","NFO",0,1],[15,"AVL","ARS",2,1],[15,"BHA","WHU",1,1],[15,"BOU","CHE",0,0],[15,"EVE","NFO",3,0],[15,"FUL","CRY",1,2],[15,"LEE","LIV",3,3],[15,"MCI","SUN",3,0],[15,"NEW","BUR",2,1],[15,"TOT","BRE",2,0],[15,"WOL","MUN",1,4],[16,"ARS","WOL",2,1],[16,"BRE","LEE",1,1],[16,"BUR","FUL",2,3],[16,"CHE","EVE",2,0],[16,"CRY","MCI",0,3],[16,"LIV","BHA",2,0],[16,"MUN","BOU",4,4],[16,"NFO","TOT",3,0],[16,"SUN","NEW",1,0],[16,"WHU","AVL",2,3],[17,"AVL","MUN",2,1],[17,"BHA","SUN",0,0],[17,"BOU","BUR",1,1],[17,"EVE","ARS",0,1],[17,"FUL","NFO",1,0],[17,"LEE","CRY",4,1],[17,"MCI","WHU",3,0],[17,"NEW","CHE",2,2],[17,"TOT","LIV",1,2],[17,"WOL","BRE",0,2],[18,"ARS","BHA",2,1],[18,"BRE","BOU",4,1],[18,"BUR","EVE",0,0],[18,"CHE","AVL",1,2],[18,"CRY","TOT",0,1],[18,"LIV","WOL",2,1],[18,"MUN","NEW",1,0],[18,"NFO","MCI",1,2],[18,"SUN","LEE",1,1],[18,"WHU","FUL",0,1],[19,"ARS","AVL",4,1],[19,"BRE","TOT",0,0],[19,"BUR","NEW",1,3],[19,"CHE","BOU",2,2],[19,"CRY","FUL",1,1],[19,"LIV","LEE",0,0],[19,"MUN","WOL",1,1],[19,"NFO","EVE",0,2],[19,"SUN","MCI",0,0],[19,"WHU","BHA",2,2],[20,"AVL","NFO",3,1],[20,"BHA","BUR",2,0],[20,"BOU","ARS",2,3],[20,"EVE","BRE",2,4],[20,"FUL","LIV",2,2],[20,"LEE","MUN",1,1],[20,"MCI","CHE",1,1],[20,"NEW","CRY",2,0],[20,"TOT","SUN",1,1],[20,"WOL","WHU",3,0],[21,"ARS","LIV",0,0],[21,"BOU","TOT",3,2],[21,"BRE","SUN",3,0],[21,"BUR","MUN",2,2],[21,"CRY","AVL",0,0],[21,"EVE","WOL",1,1],[21,"FUL","CHE",2,1],[21,"MCI","BHA",1,1],[21,"NEW","LEE",4,3],[21,"WHU","NFO",1,2],[22,"AVL","EVE",0,1],[22,"BHA","BOU",1,1],[22,"CHE","BRE",2,0],[22,"LEE","FUL",1,0],[22,"LIV","BUR",1,1],[22,"MUN","MCI",2,0],[22,"NFO","ARS",0,0],[22,"SUN","CRY",2,1],[22,"TOT","WHU",1,2],[22,"WOL","NEW",0,0],[23,"ARS","MUN",2,3],[23,"BOU","LIV",3,2],[23,"BRE","NFO",0,2],[23,"BUR","TOT",2,2],[23,"CRY","CHE",1,3],[23,"EVE","LEE",1,1],[23,"FUL","BHA",2,1],[23,"MCI","WOL",2,0],[23,"NEW","AVL",0,2],[23,"WHU","SUN",3,1],[24,"AVL","BRE",0,1],[24,"BHA","EVE",1,1],[24,"CHE","WHU",3,2],[24,"LEE","ARS",0,4],[24,"LIV","NEW",4,1],[24,"MUN","FUL",3,2],[24,"NFO","CRY",1,1],[24,"SUN","BUR",3,0],[24,"TOT","MCI",2,2],[24,"WOL","BOU",0,2],[25,"ARS","SUN",3,0],[25,"BHA","CRY",0,1],[25,"BOU","AVL",1,1],[25,"BUR","WHU",0,2],[25,"FUL","EVE",1,2],[25,"LEE","NFO",3,1],[25,"LIV","MCI",1,2],[25,"MUN","TOT",2,0],[25,"NEW","BRE",2,3],[25,"WOL","CHE",1,3],[26,"AVL","BHA",1,0],[26,"BRE","ARS",1,1],[26,"CHE","LEE",2,2],[26,"CRY","BUR",2,3],[26,"EVE","BOU",1,2],[26,"MCI","FUL",3,0],[26,"NFO","WOL",0,0],[26,"SUN","LIV",0,1],[26,"TOT","NEW",1,2],[26,"WHU","MUN",1,1],[27,"AVL","LEE",1,1],[27,"BRE","BHA",0,2],[27,"CHE","BUR",1,1],[27,"CRY","WOL",1,0],[27,"EVE","MUN",0,1],[27,"MCI","NEW",2,1],[27,"NFO","LIV",0,1],[27,"SUN","FUL",1,3],[27,"TOT","ARS",1,4],[27,"WHU","BOU",0,0],[28,"ARS","CHE",2,1],[28,"BHA","NFO",2,1],[28,"BOU","SUN",1,1],[28,"BUR","BRE",3,4],[28,"FUL","TOT",2,1],[28,"LEE","MCI",0,1],[28,"LIV","WHU",5,2],[28,"MUN","CRY",2,1],[28,"NEW","EVE",2,3],[28,"WOL","AVL",2,0],[29,"AVL","CHE",1,4],[29,"BHA","ARS",0,1],[29,"BOU","BRE",0,0],[29,"EVE","BUR",2,0],[29,"FUL","WHU",0,1],[29,"LEE","SUN",0,1],[29,"MCI","NFO",2,2],[29,"NEW","MUN",2,1],[29,"TOT","CRY",1,3],[29,"WOL","LIV",2,1],[30,"ARS","EVE",2,0],[30,"BRE","WOL",2,2],[30,"BUR","BOU",0,0],[30,"CHE","NEW",0,1],[30,"CRY","LEE",0,0],[30,"LIV","TOT",1,1],[30,"MUN","AVL",3,1],[30,"NFO","FUL",0,0],[30,"SUN","BHA",0,1],[30,"WHU","MCI",1,1],[31,"AVL","WHU",2,0],[31,"BHA","LIV",2,1],[31,"BOU","MUN",2,2],[31,"EVE","CHE",3,0],[31,"FUL","BUR",3,1],[31,"LEE","BRE",0,0],[31,"MCI","CRY",3,0],[31,"NEW","SUN",1,2],[31,"TOT","NFO",0,3],[31,"WOL","ARS",2,2],[32,"ARS","BOU",1,2],[32,"BRE","EVE",2,2],[32,"BUR","BHA",0,2],[32,"CHE","MCI",0,3],[32,"CRY","NEW",2,1],[32,"LIV","FUL",2,0],[32,"MUN","LEE",1,2],[32,"NFO","AVL",1,1],[32,"SUN","TOT",1,0],[32,"WHU","WOL",4,0],[33,"AVL","SUN",4,3],[33,"BRE","FUL",0,0],[33,"CHE","MUN",0,1],[33,"CRY","WHU",0,0],[33,"EVE","LIV",1,2],[33,"LEE","WOL",3,0],[33,"MCI","ARS",2,1],[33,"NEW","BOU",1,2],[33,"NFO","BUR",4,1],[33,"TOT","BHA",2,2],[34,"ARS","NEW",1,0],[34,"BHA","CHE",3,0],[34,"BOU","LEE",2,2],[34,"BUR","MCI",0,1],[34,"FUL","AVL",1,0],[34,"LIV","CRY",3,1],[34,"MUN","BRE",2,1],[34,"SUN","NFO",0,5],[34,"WHU","EVE",2,1],[34,"WOL","TOT",0,1],[35,"ARS","FUL",3,0],[35,"AVL","TOT",1,2],[35,"BOU","CRY",3,0],[35,"BRE","WHU",3,0],[35,"CHE","NFO",1,3],[35,"EVE","MCI",3,3],[35,"LEE","BUR",3,1],[35,"MUN","LIV",3,2],[35,"NEW","BHA",3,1],[35,"WOL","SUN",1,1],[36,"BHA","WOL",3,0],[36,"BUR","AVL",2,2],[36,"CRY","EVE",2,2],[36,"FUL","BOU",0,1],[36,"LIV","CHE",1,1],[36,"MCI","BRE",3,0],[36,"NFO","NEW",1,1],[36,"SUN","MUN",0,0],[36,"TOT","LEE",1,1],[36,"WHU","ARS",0,1],[37,"ARS","BUR",1,0],[37,"AVL","LIV",4,2],[37,"BOU","MCI",1,1],[37,"BRE","CRY",2,2],[37,"CHE","TOT",2,1],[37,"EVE","SUN",1,3],[37,"LEE","BHA",1,0],[37,"MUN","NFO",3,2],[37,"NEW","WHU",3,1],[37,"WOL","FUL",1,1],[38,"BHA","MUN",0,3],[38,"BUR","WOL",1,1],[38,"CRY","ARS",1,2],[38,"FUL","NEW",2,0],[38,"LIV","BRE",1,1],[38,"MCI","AVL",1,2],[38,"NFO","BOU",1,1],[38,"SUN","CHE",2,1],[38,"TOT","EVE",1,0],[38,"WHU","LEE",3,0]]};
+const T = Object.fromEntries(DATA.teams.map(t => [t.c, t]));
+const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const fmtDate = s => { const [y,m,d] = s.split("-").map(Number); return `${d} ${MONTHS[m-1]} ${y}`; };
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const crest = c => `<span class="crest" aria-hidden="true">${c}</span>`;
+const link = c => `<a class="teamlink" href="#team-${c}">${crest(c)}<span>${esc(T[c].s)}</span></a>`;
+
+// ---- standings computed from results (same rules as the SQL view) ----
+function standings(){
+  const s = Object.fromEntries(DATA.teams.map(t => [t.c, {c:t.c,P:0,W:0,D:0,L:0,GF:0,GA:0}]));
+  for (const [, h, a, hg, ag] of DATA.m){
+    for (const [t, f, g] of [[h,hg,ag],[a,ag,hg]]){
+      const r = s[t]; r.P++; r.GF += f; r.GA += g;
+      if (f > g) r.W++; else if (f === g) r.D++; else r.L++;
+    }
+  }
+  return Object.values(s).map(r => ({...r, GD:r.GF-r.GA, Pts:3*r.W + r.D}))
+    .sort((x,y) => y.Pts-x.Pts || y.GD-x.GD || y.GF-x.GF || T[x.c].s.localeCompare(T[y.c].s))
+    .map((r,i) => ({...r, pos:i+1}));
+}
+const TABLE = standings();
+const POS = Object.fromEntries(TABLE.map(r => [r.c, r]));
+const zone = p => p===1 ? "var(--z-champ)" : p<=5 ? "var(--z-ucl)" : p<=7 ? "var(--z-uel)" : p===8 ? "var(--z-uecl)" : p>=18 ? "var(--z-rel)" : "transparent";
+const gd = n => `<span class="${n>0?'gd-pos':n<0?'gd-neg':''}">${n>0?'+':''}${n}</span>`;
+
+function viewTable(){
+  const rows = TABLE.map(r => `<tr>
+    <td class="pos" style="--zone:${zone(r.pos)}">${r.pos}</td>
+    <td class="team">${link(r.c)}</td>
+    <td>${r.P}</td><td class="pts">${r.Pts}</td><td>${r.GF}</td><td>${r.GA}</td><td>${gd(r.GD)}</td>
+    <td class="small">${r.W}</td><td class="small">${r.L}</td><td class="small">${r.D}</td></tr>`).join("");
+  return `<h2>League table</h2><p class="sub">Final standings after 38 matchweeks. Select a club to see all its results.</p>
+  <div class="card scroll"><table>
+    <thead><tr><th>Pos</th><th class="team">Team</th><th title="Played">P</th><th title="Points">Pts</th>
+    <th title="Goals for">GF</th><th title="Goals against">GA</th><th title="Goal difference">GD</th>
+    <th title="Wins">W</th><th title="Losses">L</th><th title="Draws">D</th></tr></thead>
+    <tbody>${rows}</tbody></table></div>
+  <div class="legend">
+    <span style="--c:var(--z-champ)">Champions</span><span style="--c:var(--z-ucl)">Champions League</span>
+    <span style="--c:var(--z-uel)">Europa League</span><span style="--c:var(--z-uecl)">Conference League</span>
+    <span style="--c:var(--z-rel)">Relegated</span></div>`;
+}
+
+function viewResults(mw){
+  const games = DATA.m.filter(m => m[0] === mw);
+  const rounds = Array.from({length:38}, (_,i) => i+1).map(n =>
+    `<a href="#results-${n}" aria-current="${n===mw}" aria-label="Matchweek ${n}">${n}</a>`).join("");
+  const list = games.map(([, h, a, hg, ag]) => `<div class="fixture">
+      <div class="home">${link(h)}</div>
+      <div class="score" aria-label="${hg} to ${ag}">${hg > ag ? `<b>${hg}</b>` : `<span class="dim">${hg}</span>`}–${ag > hg ? `<b>${ag}</b>` : `<span class="dim">${ag}</span>`}</div>
+      <div class="away">${link(a)}</div>
+      <div class="venue">${esc(T[h].st)}</div></div>`).join("");
+  return `<nav class="rounds" aria-label="Matchweeks">${rounds}</nav>
+  <div class="mwhead"><div><h2>Matchweek ${mw}</h2><p class="sub" style="margin:0">${fmtDate(DATA.mw[mw])}</p></div>
+    <div class="step"><a href="#results-${mw-1}" aria-disabled="${mw===1}">Previous</a><a href="#results-${mw+1}" aria-disabled="${mw===38}">Next</a></div></div>
+  <div class="card">${list}</div>`;
+}
+
+let teamFilter = "All";
+const ordinal = n => n + ((n % 100 >= 11 && n % 100 <= 13) ? "th" : ({1:"st",2:"nd",3:"rd"}[n % 10] || "th"));
+function viewTeam(c){
+  const t = T[c], r = POS[c];
+  const games = DATA.m.filter(m => m[1] === c || m[2] === c).map(([mw, h, a, hg, ag]) => {
+    const home = h === c, gf = home ? hg : ag, ga = home ? ag : hg;
+    return {mw, opp: home ? a : h, home, gf, ga, res: gf > ga ? "W" : gf === ga ? "D" : "L"};
+  });
+  const rec = side => { const g = games.filter(x => x.home === side);
+    return `${g.filter(x=>x.res==="W").length}W ${g.filter(x=>x.res==="D").length}D ${g.filter(x=>x.res==="L").length}L`; };
+  const shown = games.filter(g => teamFilter === "All" || (teamFilter === "Home") === g.home);
+  const rows = shown.map(g => `<tr>
+    <td class="small">${g.mw}</td><td class="ha" style="text-align:left">${fmtDate(DATA.mw[g.mw])}</td>
+    <td class="ha">${g.home ? "Home" : "Away"}</td>
+    <td class="team">${link(g.opp)}</td>
+    <td class="big">${g.gf}–${g.ga}</td>
+    <td><span class="res ${g.res}" aria-label="${{W:"Win",D:"Draw",L:"Loss"}[g.res]}">${g.res}</span></td></tr>`).join("");
+  const last5 = games.slice(-5).map(g => `<span class="res ${g.res}">${g.res}</span>`).join("");
+  const btn = f => `<button type="button" data-filter="${f}" aria-pressed="${teamFilter===f}">${f}</button>`;
+  return `<a class="back" href="#table">← Back to the table</a>
+  <div class="teamhead">${crest(c)}<div><h2>${esc(t.n)}</h2><p class="sub" style="margin:0">${esc(t.st)}</p></div></div>
+  <div class="facts">
+    <div class="fact"><b>${ordinal(r.pos)}</b><span>Final position</span></div>
+    <div class="fact"><b>${r.Pts}</b><span>Points</span></div>
+    <div class="fact"><b>${r.W}–${r.L}–${r.D}</b><span>Wins, losses, draws</span></div>
+    <div class="fact"><b>${r.GF}:${r.GA}</b><span>Goals for and against</span></div>
+    <div class="fact"><b style="font-size:20px;line-height:30px">${rec(true)}</b><span>At home</span></div>
+    <div class="fact"><b style="font-size:20px;line-height:30px">${rec(false)}</b><span>Away</span></div>
+  </div>
+  <div class="mwhead"><h2 style="font-size:24px">All ${games.length} matches</h2><div class="form" aria-label="Last five results"><span class="ha" style="margin-right:4px;align-self:center">Last 5</span>${last5}</div></div>
+  <div class="filters" role="group" aria-label="Show matches">${btn("All")}${btn("Home")}${btn("Away")}</div>
+  <div class="card scroll"><table>
+    <thead><tr><th>MW</th><th style="text-align:left">Date</th><th>Venue</th><th class="team">Opponent</th><th>Score</th><th>Result</th></tr></thead>
+    <tbody>${rows}</tbody></table></div>`;
+}
+
+// ---- routing: #table, #results-12, #team-ARS ----
+const app = document.getElementById("app");
+let lastHash = "";
+function render(){
+  const h = location.hash.slice(1) || "table";
+  let html, section = "table", m;
+  if ((m = h.match(/^team-([A-Z]{3})$/)) && T[m[1]]) { html = viewTeam(m[1]); }
+  else if ((m = h.match(/^results(?:-(\d{1,2}))?$/))) {
+    const n = Math.min(38, Math.max(1, Number(m[1] || 38))); html = viewResults(n); section = "results";
+  } else { html = viewTable(); }
+  app.innerHTML = html;
+  for (const id of ["table","results"]) {
+    const a = document.getElementById("nav-" + id);
+    if (id === section && !h.startsWith("team-")) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current");
+  }
+  const cur = app.querySelector('.rounds a[aria-current="true"]');
+  if (cur) cur.scrollIntoView({block:"nearest", inline:"center"});
+  const pageChanged = h !== lastHash && (h.split("-")[0] !== lastHash.split("-")[0] || h.startsWith("team-"));
+  if (pageChanged && lastHash) { window.scrollTo(0,0); app.focus({preventScroll:true}); }
+  lastHash = h;
+  document.title = h.startsWith("team-") && T[h.slice(5)] ? `${T[h.slice(5)].n} – results 2025/26` : "Premier League 2025/26 – Table and results";
+}
+app.addEventListener("click", e => {
+  const b = e.target.closest("button[data-filter]");
+  if (b) { teamFilter = b.dataset.filter; render(); }
+});
+window.addEventListener("hashchange", () => { teamFilter = "All"; render(); });
+render();
+</script>
+</body>
+</html>
